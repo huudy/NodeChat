@@ -1,0 +1,38 @@
+<div class="jumbotron text-center">
+	<h1>Get Chatty!</h1>
+</div>
+<div class="container">
+
+	<div class="row">
+		<div class="col-xs-8" id="chat-window">
+			<ul>
+				<li ng-repeat="message in messages track by $index">
+					<span class="username">{{message.username}} :</span>
+					<span class="msg">{{message.message}}</span>
+				</li>
+			</ul>
+		</div>
+		<div class="col-xs-4 user-window">
+			<h5>Active users</h5>
+			<ul>
+				<li class="user"ng-repeat="user in users"><span class="glyphicon glyphicon-ok-sign col"></span> {{user}}</li>
+			</ul>
+		</div>
+	</div>
+<br>
+	<div class="row">
+		<form class="form-horizontal" ng-submit="sendMsg(msg)">
+			<div class="form-group">
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="chatInput" placeholder="Enter message..." ng-model="msg">
+				</div>
+				<div class="col-sm-3">
+					<button type="submit" class="btn btn-primary" ng-click="sendMsg(msg)">Send</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<a href="/home" class="btn btn-danger">QUIT</a>
+
+</div>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="chatJs">
+<head>
+	<base href="/">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Simple chat Node.js Express Socket.io</title>
+	<link rel="stylesheet" type="text/css" href="app/css/styl.css"/>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app/css/style.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ 	<script src="libs/angular/angular.js"></script>
+ 	<script src="libs/angular-route/angular-route.js"></script>
+	<script src="libs/angular-socket-io/socket.js"></script>
+	<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="libs/bootstrap/bootbox.js"></script>
+	<script type="text/javascript" src="app/controllers/mainCtrl.js"></script>
+	<script type="text/javascript" src="app/controllers/chatCtrl.js"></script>
+	<script type="text/javascript" src="app/controllers/userCtrl.js"></script>
+	<script type="text/javascript" src="app/services/authService.js"></script>
+	<script type="text/javascript" src="app/services/socketService.js"></script>
+	<script type="text/javascript" src="app/services/btfordSocket.js"></script>
+	<script type="text/javascript" src="app/services/userService.js"></script>
+	<script type="text/javascript" src="app/app.routes.js"></script>
+	<script src="app/app.js"></script>
+</head>
+
+<body ng-controller="MainCtrl as main">
+
+	<header class="head">
+		<div class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+						<a class="link" href="/home"><h4>ChatJS <span class="glyphicon glyphicon-comment"></span> </h4></a>
+				</div>
+				<div class="nav navbar-nav">
+					<a ui-sref="users"></a>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li  ng-if="!main.loggedIn"><a href="/login"><h4>Login</h4></a></li>
+					<li ng-if="!main.loggedIn"><a href="/sign"><h4>SignUp</h4></a></li>
+					<li ng-if="main.loggedIn"><a href="#"><h4>Hey {{ main.user.username }} !!</h4></a></li>
+					<li ng-if="main.loggedIn"><a href="/home" ng-click="main.Logout()"><h4>Logout</h4></a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+
+ 	<div ng-view></div>
+	
+</body>
+</html>
